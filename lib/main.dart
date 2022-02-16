@@ -88,8 +88,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Text(_getButtonText(),
                               style: const TextStyle(
                                   fontSize: 38,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w900))))),
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white))))),
             ),
           )
         ],
@@ -100,11 +100,11 @@ class _MyHomePageState extends State<MyHomePage> {
   String _getButtonText() {
     switch (gameState) {
       case GameState.readyToStart:
-        return 'Start';
+        return 'START';
       case GameState.waiting:
-        return 'Wait';
+        return 'WAIT';
       case GameState.canBeStopped:
-        return 'Stop';
+        return 'STOP';
     }
   }
 
