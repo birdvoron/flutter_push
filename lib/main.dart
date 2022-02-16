@@ -86,10 +86,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: 200,
                       child: Center(
                           child: Text(_getButtonText(),
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 38,
                                   fontWeight: FontWeight.w900,
-                                  color: Colors.white))))),
+                                  color: gameState == GameState.readyToStart
+                                      ? const Color(0xFF40CA88)
+                                      : gameState == GameState.waiting
+                                          ? const Color(0xFFE0982D)
+                                          : const Color(0xFFE02D47)))))),
             ),
           )
         ],
