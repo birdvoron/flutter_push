@@ -28,8 +28,9 @@ class _MyHomePageState extends State<MyHomePage> {
   String millisecondsText = '';
   GameState gameState = GameState.readyToStart;
   Timer? waitingTimer;
-
   Timer? stoppableTimer;
+
+  Color btnColor = Colors.white;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,11 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               style: TextStyle(
                                   fontSize: 38,
                                   fontWeight: FontWeight.w900,
-                                  color: gameState == GameState.readyToStart
-                                      ? const Color(0xFF40CA88)
-                                      : gameState == GameState.waiting
-                                          ? const Color(0xFFE0982D)
-                                          : const Color(0xFFE02D47)))))),
+                                  color: Colors.white))))),
             ),
           )
         ],
@@ -104,10 +101,13 @@ class _MyHomePageState extends State<MyHomePage> {
   String _getButtonText() {
     switch (gameState) {
       case GameState.readyToStart:
+        btnColor = const Color(0xFF40CA88);
         return 'START';
       case GameState.waiting:
+        btnColor = const Color(0xFFE0982D);
         return 'WAIT';
       case GameState.canBeStopped:
+        btnColor = const Color(0xFFE02D47);
         return 'STOP';
     }
   }
