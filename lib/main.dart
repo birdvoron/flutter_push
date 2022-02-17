@@ -30,7 +30,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Timer? waitingTimer;
   Timer? stoppableTimer;
 
-  Color btnColor = Colors.white;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,13 +80,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 }
               }),
               child: ColoredBox(
-                  color: Colors.black12,
+                  color: _getButtonColor(),
                   child: SizedBox(
                       height: 200,
                       width: 200,
                       child: Center(
                           child: Text(_getButtonText(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 38,
                                   fontWeight: FontWeight.w900,
                                   color: Colors.white))))),
@@ -101,14 +100,22 @@ class _MyHomePageState extends State<MyHomePage> {
   String _getButtonText() {
     switch (gameState) {
       case GameState.readyToStart:
-        btnColor = const Color(0xFF40CA88);
         return 'START';
       case GameState.waiting:
-        btnColor = const Color(0xFFE0982D);
         return 'WAIT';
       case GameState.canBeStopped:
-        btnColor = const Color(0xFFE02D47);
         return 'STOP';
+    }
+  }
+
+  Color _getButtonColor() {
+    switch (gameState) {
+      case GameState.readyToStart:
+        return const Color(0xFF40CA88);
+      case GameState.waiting:
+        return const Color(0xFFE0982D);
+      case GameState.canBeStopped:
+        return const Color(0xFFE02D47);
     }
   }
 
